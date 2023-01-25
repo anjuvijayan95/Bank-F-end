@@ -1,0 +1,44 @@
+<app-header></app-header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-7 mt-5">
+            <img width="100%" height="100%" src="https://media.istockphoto.com/id/1257578419/vector/the-loan-processing-the-bank-manager-prepares-the-contract-with-the-client-financial-advisor.jpg?s=612x612&w=0&k=20&c=eNMO5-mb4MEGsdqypn1WKvIFmRse28i44ncuGhcj5M8=" alt="">
+        </div>
+
+        <div class="col-md-5 mt-5  pt-5">
+            <form (ngSubmit)="login()" [formGroup]="loginForm" class="wrapper border border-3 p-4 rounded-3">
+            <div class="form-floating mb-3 ">
+                <input name="acno" formControlName="acno" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Account Number</label>
+              </div>
+              <!-- when acno is invalid -->
+              <!-- ngif is called structural binding to bind ts and html in the basis of some condition-->
+
+              <div *ngIf="this.loginForm.get('acno')?.errors&&this.loginForm.get('acno')?.touched" class="text-danger mb-2">Invalid Account Number</div>
+              
+              
+              <div class="form-floating">
+                <input name="pswd" formControlName="pswd" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+              </div>
+              <!-- when pswd is invalid -->
+              <!-- ngif is called structural binding to bind ts and html in the basis of some condition-->
+              <div *ngIf="this.loginForm.get('pswd')?.errors&&this.loginForm.get('pswd')?.touched" class="text-danger mb-2">Invalid Password</div>
+              
+              <!-- to show error -->
+              <div class="text-danger">{{errorMsg}}</div>
+
+              <button type="submit" class="btn btn-success mt-3 mb-3">LOGIN
+                <span *ngIf="successMsg" class="spinner-border text-light" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </span>
+              </button>
+              <br>
+              &nbsp;
+              <span>New User Click here to <a routerLink="/register">create account</a></span>
+
+        </form>
+        </div>
+    </div>
+</div>

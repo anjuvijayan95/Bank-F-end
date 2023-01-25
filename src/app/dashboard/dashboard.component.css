@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* .wrapper{
+    margin: auto;
+    margin-bottom: -20px;
+    padding: 20px;
+    grid-gap: 10px;
+    background-color: rgb(223, 236, 228);
+    overflow: hidden;
+} */
+
+#sidebar{
+    background-color: white;
+    height: 100%;
+    box-shadow: 5px 5px 2.5px lightblue;
+    
+}
+
+/* #image{
+    background-image: url('https://dxc.scene7.com/is/image/dxc/AdobeStock_206054745_low:banner_desktop');  
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+} */
+
+img{
+    width: 100%;
+}
+#buttonrow{
+
+    border-radius: 15px;
+    box-shadow: 5px 5px 2.5px lightblue;
+
+}
+.card-title{
+    font-weight: bold;
+    padding: 2px;
+    border-radius: 13px;
+
+}
+.card-text{
+    text-align: justify;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* .offcanvas-body{
+display: flex;
+justify-content:space-around;
+}
+
+.table{
+    margin-top: -40px;
+    width: 80vw;
+} */
+

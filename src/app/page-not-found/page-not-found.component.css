@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Kenia&family=Lobster&family=Pacifico&family=Playfair+Display:ital@1&family=Ubuntu&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img{
+    width: 400px;
+}
+.row{
+    margin: 90px auto;
+}
+.content{
+    background-color: azure;
+    width: 100%;
+}
+h1{
+    font-size: 80px;
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+}
+h5{
+    margin-top: 20px;
+}

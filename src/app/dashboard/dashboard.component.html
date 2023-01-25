@@ -1,0 +1,316 @@
+<!-- navbar -->
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary p-2">
+  <div class="container-fluid">
+    <a class="navbar-brand" >
+      <i class="fa-sharp fa-solid fa-building-columns ms-5 me-3 fs-1"></i>
+      &nbsp;
+   <span class="fs-3">SAMRIDHI</span>
+  </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse me-4" id="navbarSupportedContent">
+      <ul class="navbar-nav  mb-2 mb-lg-0 ms-auto">
+        <li class="m-1"><a (click)="deleteAccountFromNavbar()" class="pe-4"><i class="fa-solid fa-trash-can text-danger btn fs-3"></i></a></li>
+        <li class="m-1"><a (click)="logout()" class="p-1"><i class="fa-solid fa-right-from-bracket text-secondary btn fs-3"></i></a></li>
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+
+<!-- <pre>
+  {{history | json}}
+</pre> -->
+
+<div *ngIf="logoutDiv" class="container">
+    <div style="display: flex; justify-content: center; align-items: center;">
+    <img style="width: 60px; margin-top: 30PX;" src="https://www.rmtao.com/Themes/RMTAO/Styles/images/loading.gif" alt="">
+      <p>Please wait for logout...</p>
+
+    </div>
+    <!-- <p>please weight for logout...</p> -->
+</div>
+
+<!-- delete confirmation -->
+<app-delete (onDelete)="onDelete($event)" (onCancel)="onCancel()" [item]="acno" ></app-delete>
+<!-- delete Spinner -->
+<div *ngIf="deleteSpinnerDiv" class="container">
+  <div style="display: flex; justify-content: center; align-items: center;">
+  <img style="width: 60px; margin-top: 30PX;" src="https://www.rmtao.com/Themes/RMTAO/Styles/images/loading.gif" alt="">
+    <p>Please wait while deleting your account...</p>
+
+  </div>
+  <!-- <p>please weight for logout...</p> -->
+</div>
+<!-- dashboard -->
+<div  *ngIf="!logoutDiv"  class="container-fluid">
+<div  *ngIf="!deleteConfirm"  id="wrapper" class="row m-2">
+
+  <!-- sidenav -->
+<div class="col-md-1 "></div>
+<div id="sidebar" class="col-md-3 border rounded m-2  mt-5">
+  <h1 class="p-2 mt-2 text-center">Welcome {{user}}</h1>
+  <h4 class="text-center ms-3 mt-3 me-3 border border-2 p-1">A/c No:{{currentAcno}}</h4>
+  <label style="text-align: justify;" class="ps-4 pe-4 pt-4">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Voluptate rem quos sequi sint earum asperiores aut, nemo consequatur
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Voluptate rem quos sequi sint earum asperiores aut, nemo consequatur
+    Lorem ipsum dolor sit amet
+
+  </label>
+
+  <div class="collapse ps-4 pe-4" id="collapseExample"style="text-align: justify; overflow: hidden;">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Voluptate rem quos sequi sint 
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+
+   
+  </div>
+  <button (click)="collapse()" class="btn btn-primary  m-4 p-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+Read <span *ngIf="isCollapse">More</span>
+  <span *ngIf="!isCollapse">Less</span>
+</button>
+</div>
+
+
+
+
+<!-- image -->
+<div  class="col-md-7 m-2">
+  <div class="row m-2">
+    <div id="image" class="col-md-12">
+      <img src="https://img.freepik.com/free-vector/people-keeping-money-bank-protecting-savings-safe-vector-illustration-secure-finance-deposit-investment-safety-concept_74855-13196.jpg?w=2000" style="width: 70%;">
+  </div>
+  </div>
+
+
+
+
+<div id="buttonrow" class="row ms-3 border border-2 rounded  text-center p-3">
+
+<!-- deposite card -->
+<div id="deposite" class="col-md-3">
+
+
+            <a class="btn btn-success p-2 w-75"  data-bs-toggle="offcanvas" href="#offcanvasCredit">
+              <i class="fa-solid fa-credit-card fs-3" ></i>
+              CREDIT
+            </a>
+
+
+</div>
+
+
+
+<!-- retrive card -->
+<div id="retrieve" class="col-md-3">
+    
+            <a (click)="transaction()" class="btn btn-warning p-2 w-75" data-bs-toggle="offcanvas" href="#offcanvasTransfer">
+              <i class="fa-regular fa-credit-card fs-3"></i>
+              TRANSFER
+            </a>
+
+</div>
+
+
+
+<!-- saving card -->
+<div id="balance" class="col-md-3">
+    
+            <a (click)="getBalance()" class="btn btn-primary p-2 w-75" data-bs-toggle="offcanvas" href="#offcanvasExample">
+              <i class="fa-solid fa-piggy-bank fs-3 "></i>       
+              BALANCE
+            </a>
+
+</div>
+
+<!-- history -->
+<div id="deposite" class="col-md-3">
+
+
+  <a (click)="trasactionHistory()" class="btn btn-secondary p-2 w-75"  data-bs-toggle="offcanvas" href="#offcanvasHistory">
+    <i class="fa-solid fa-clock-rotate-left  fs-3 "></i>
+    HISTORY
+  </a>
+
+
+</div>
+
+
+</div>
+</div>
+<div class="col-md-1"></div>
+</div>
+</div>
+
+<!-- offcanvas balance-->
+
+<div class="offcanvas offcanvas-start m-5" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header p-3">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Balance Enquiry</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="mt-5 ps-5 fs-2 fw-bold">
+      Dear {{user}},
+      
+      <div class="text-center">
+        <img style="width: 100%;" src="https://img.freepik.com/free-vector/people-protecting-their-cash_74855-5553.jpg?w=2000" alt="">
+      </div>
+      
+      <label class="fs-5">Your current account balance is {{balance}}</label>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- offcanvas Credit-->
+
+<div class="offcanvas offcanvas-start m-4" tabindex="-1" id="offcanvasCredit" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header p-3">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Credit Amount</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    
+    <div class="mt-1 ps-5 fs-2 fw-bold">
+      Dear {{user}},<br>
+      <label class="fs-5">Please Enter Your Amount</label>
+
+      <div class="text-center">
+        <img style="width: 100%;" src="https://img.freepik.com/free-vector/family-couple-saving-money_74855-5240.jpg" alt="">
+      </div>
+
+      <form (ngSubmit)="creditFun()" [formGroup]="creditForm" class="mt-2 border p-3 me-4" >
+        <input name="amount" formControlName="amount" type="text" class="form-control p-1" placeholder="Enter amount">
+        <div *ngIf="this.creditForm.get('amount')?.errors&&this.creditForm.get('amount')?.touched" class="text-danger" style="font-size: 15px; font-weight: lighter;">Invalid Amount</div>
+        <div class="text-success" style="font-size: 15px;">{{creditMsg}}</div>
+        <button (click)="showconfetti($event.target)"
+        type="submit" class="btn btn-success p-1">Deposite</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- offcanvas Transaction-->
+
+<div class="offcanvas offcanvas-start m-4" tabindex="-1" id="offcanvasTransfer" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header p-3">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Transaction Amount</h5>
+    <button (click)="clearfundTransferForm()" type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+
+    <div class=" ps-5 fs-2 fw-bold">
+      Dear {{user}},<br>
+      <label class="fs-5">Please Enter Your Amount</label>
+
+      <div class="text-center">
+        <img style="width: 90%" src="https://eportal.net.in/img/home_5/dmt-1.jpg" alt="">
+      </div>
+
+      <form (ngSubmit)="transaction()" [formGroup]="transactionForm" class=" border p-2 me-4 " >
+
+        <input name="toAcno" formControlName="toAcno" type="text" class="form-control m-1 p-2" 
+        placeholder="Enter transfer acno">
+        <div *ngIf="this.transactionForm.get('toAcno')?.errors&&this.transactionForm.get('toAcno')?.touched" class="text-danger" style="font-size: 15px; font-weight: lighter;">Invalid Account</div>
+
+        <input name="amount" formControlName="amount" type="text" class="form-control m-1 p-2" placeholder="Enter amount">
+        <div *ngIf="this.transactionForm.get('amount')?.errors&&this.transactionForm.get('amount')?.touched" class="text-danger" style="font-size: 15px; font-weight: lighter;">Invalid Amount</div>
+        
+        <input name="pswd" formControlName="pswd" type="text" class="form-control m-1 p-2" placeholder="Enter password">
+        <div *ngIf="this.transactionForm.get('pswd')?.errors&&this.transactionForm.get('pswd')?.touched" class="text-danger" style="font-size: 15px; font-weight: lighter;">Invalid Password</div>
+
+        <div class="text-success" style="font-size: 15px;"></div>
+        
+        <div class="text-success" style="font-size: 15px;">
+          {{fundTansferSuccessMsg}}
+        </div>
+        <div class="text-danger" style="font-size: 15px;">
+          {{fundTansferErrorMsg}}
+        </div>
+        <button type="submit" class="btn btn-warning p-1 ms-1">Transfer</button>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- offcanvas history-->
+
+<div class="offcanvas offcanvas-top m-5" tabindex="-1" id="offcanvasHistory" aria-labelledby="offcanvasExampleLabel" style="height: 80%;">
+  <div class="offcanvas-header p-3">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Transaction History</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body" style="align-items: center;">
+
+    
+    <div class="row">
+    <div class="col-md-1"></div>
+
+      <div class="col-md-10">
+    <div class="row text-center border p-3 mb-3" style="background-color: cadetblue; align-items: center;">
+      <div class="col-lg-4">
+        <h2 class="text-light">Transaction History</h2>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="input-group m-1">
+          <span class="input-group-text ps-3 pe-3">Search by</span>
+          <input (keyup)="search($event)"  type="text" aria-label="First name" placeholder="Transaction type" class="form-control  p-2">
+        </div>      
+      </div>
+
+      <div class="col-lg-4">
+        <button (click)="generatePdf()" class=" btn btn-warning p-2 text-bold" type="button"> Download Pdf </button>
+      </div>
+    </div>
+
+
+
+    <table class="table text-center">
+      <thead>
+        <tr class="table-danger">
+          <th scope="col">No</th>
+          <th scope="col">Mode</th>
+          <th scope="col">From Account</th>
+          <th scope="col">To Account</th>
+          <th scope="col">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-primary" *ngFor="let H of history | filter : searchKey : 'type';  let i=index; ">
+          <th scope="row">{{i+1}}</th>
+          <td>{{H.type}}</td>
+          <td>{{H.fromAcno}}</td>
+          <td>{{H.toAcno}}</td>
+          <td>{{H.amount}}</td>
+
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+
+    <div class="col-md-1"></div>
+
+  </div>
+    <!-- <div class="mt-5 ps-5 fs-2 fw-bold">
+      Dear {{user}},
+      
+      <div class="text-center">
+        <img style="width: 100%;" src="https://img.freepik.com/free-vector/people-protecting-their-cash_74855-5553.jpg?w=2000" alt="">
+      </div>
+      
+      <label class="fs-5">Your current account balance is {{balance}}</label>
+    </div> -->
+  </div>
+</div>
